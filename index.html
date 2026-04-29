@@ -56,8 +56,6 @@ nav {
 }
 
 .nav-logo-mark {
-  width: 40px;
-  height: 40px;
   border-radius: 8px;
   overflow: hidden;
   display: flex;
@@ -953,7 +951,7 @@ footer {
 <!-- NAV -->
 <nav>
   <a href="#hero" class="nav-logo">
-    <div class="nav-logo-mark"><img src="logo.png" alt="The One For All" style="width:40px;height:40px;object-fit:contain;"></div>
+    <div class="nav-logo-mark"><img src="logo.png" alt="The One For All" style="width:auto;height:56px;object-fit:contain;"></div>
     <div>
       <div class="nav-logo-text">The One For All</div>
       <div class="nav-logo-sub">by Madz Enterprises</div>
@@ -987,7 +985,7 @@ footer {
       </p>
       <div class="hero-actions">
         <a href="#demo" class="btn-primary">Request a Demo</a>
-        <a href="https://theoneforall.netlify.app" target="_blank" class="btn-outline">View Live Platform →</a>
+        <a href="https://app.theoneforall.co.za" target="_blank" class="btn-outline">View Live Platform →</a>
       </div>
       <div class="hero-stats">
         <div>
@@ -1192,7 +1190,7 @@ footer {
         <div class="pricing-feature"><div class="pf-dot"></div>Financial Dashboard</div>
         <div class="pricing-feature"><div class="pf-dot"></div>Basic HSEQ</div>
         <div class="pricing-feature"><div class="pf-dot"></div>Invoicing</div>
-        <div class="pricing-feature"><div class="pf-dot grey"></div>HR/IR (add-on R1,500/mo)</div>
+        <div class="pricing-feature"><div class="pf-dot"></div>HR/IR Module</div>
         <a href="#demo" class="pricing-btn">Get Started</a>
       </div>
 
@@ -1242,30 +1240,31 @@ footer {
     <h2 class="demo-title">See <span>The One For All</span><br>in action.</h2>
     <p class="demo-desc">Book a live demo and we'll walk you through the platform using your own fleet data. No commitment required.</p>
 
-    <div class="demo-form">
+    <form id="demo-form" class="demo-form" action="https://formspree.io/f/mjglbwwg" method="POST">
+      <input type="hidden" name="_replyto" value="devan@theoneforall.co.za">
       <div class="form-row">
         <div class="form-group">
           <label class="form-label">Full name</label>
-          <input type="text" class="form-input" placeholder="Your name">
+          <input type="text" name="name" class="form-input" placeholder="Your name" required>
         </div>
         <div class="form-group">
           <label class="form-label">Company name</label>
-          <input type="text" class="form-input" placeholder="Company name">
+          <input type="text" name="company" class="form-input" placeholder="Company name" required>
         </div>
       </div>
       <div class="form-row">
         <div class="form-group">
           <label class="form-label">Email address</label>
-          <input type="email" class="form-input" placeholder="you@company.co.za">
+          <input type="email" name="email" class="form-input" placeholder="you@company.co.za" required>
         </div>
         <div class="form-group">
           <label class="form-label">Phone / WhatsApp</label>
-          <input type="tel" class="form-input" placeholder="+27 ...">
+          <input type="tel" name="phone" class="form-input" placeholder="+27 ...">
         </div>
       </div>
       <div class="form-group" style="margin-bottom:1rem">
         <label class="form-label">Fleet size</label>
-        <select class="form-select">
+        <select name="fleet_size" class="form-select">
           <option value="">Select fleet size</option>
           <option>5 – 20 vehicles (Launch)</option>
           <option>20 – 50 vehicles (Professional)</option>
@@ -1275,10 +1274,12 @@ footer {
       </div>
       <div class="form-group">
         <label class="form-label">Message (optional)</label>
-        <input type="text" class="form-input" placeholder="Tell us about your fleet or current challenges...">
+        <input type="text" name="message" class="form-input" placeholder="Tell us about your fleet or current challenges...">
       </div>
-      <button class="form-submit" onclick="handleSubmit()">Request Demo →</button>
-    </div>
+      <button type="submit" class="form-submit">Request Demo →</button>
+      <div id="form-success" style="display:none;margin-top:1rem;padding:14px;border-radius:8px;background:rgba(0,169,157,0.15);color:var(--teal-light);text-align:center;font-size:14px;font-weight:500;">Thanks! We'll be in touch within 24 hours.</div>
+      <div id="form-error" style="display:none;margin-top:1rem;padding:14px;border-radius:8px;background:rgba(255,95,87,0.15);color:#ff8a84;text-align:center;font-size:14px;font-weight:500;">Something went wrong. Please WhatsApp us at <a href="https://wa.me/27605733680" style="color:#ff8a84;text-decoration:underline;">+27 060 573 3680</a></div>
+    </form>
   </div>
 </section>
 
@@ -1295,7 +1296,7 @@ footer {
       <ul class="footer-links">
         <li><a href="#features">Features</a></li>
         <li><a href="#pricing">Pricing</a></li>
-        <li><a href="https://theoneforall.netlify.app" target="_blank">Live Demo</a></li>
+        <li><a href="https://app.theoneforall.co.za" target="_blank">Live Demo</a></li>
         <li><a href="#demo">Request Demo</a></li>
       </ul>
     </div>
@@ -1349,5 +1350,37 @@ tabs.forEach(tab => {
     tab.classList.add('active');
   });
 });
+
+// Demo form handler
+const demoForm = document.getElementById('demo-form');
+if (demoForm) {
+  demoForm.addEventListener('submit', async function(e) {
+    e.preventDefault();
+    const successDiv = document.getElementById('form-success');
+    const errorDiv = document.getElementById('form-error');
+    const submitBtn = demoForm.querySelector('.form-submit');
+    successDiv.style.display = 'none';
+    errorDiv.style.display = 'none';
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Sending...';
+    try {
+      const res = await fetch('https://formspree.io/f/mjglbwwg', {
+        method: 'POST',
+        body: new FormData(demoForm),
+        headers: { 'Accept': 'application/json' }
+      });
+      if (res.ok) {
+        successDiv.style.display = 'block';
+        demoForm.reset();
+      } else {
+        errorDiv.style.display = 'block';
+      }
+    } catch (err) {
+      errorDiv.style.display = 'block';
+    }
+    submitBtn.disabled = false;
+    submitBtn.textContent = 'Request Demo →';
+  });
+}
 
 // 
