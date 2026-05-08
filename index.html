@@ -1137,10 +1137,23 @@
   .compliance-stats .section-sub { color: rgba(255,255,255,0.65); }
   .cstats-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 20px;
-    position: relative;
-    z-index: 1;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+  .cstat-card.solution {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    align-items: center;
+    background: rgba(0,169,157,0.12);
+    border: 1.5px solid rgba(0,169,157,0.35);
+    text-align: center;
+  }
+  .cstat-card.solution .cstat-amount {
+    font-size: 42px;
   }
   .cstat-card {
     border-radius: 16px;
@@ -1153,10 +1166,6 @@
     background: rgba(239,68,68,0.1);
     border: 1.5px solid rgba(239,68,68,0.25);
   }
-  .cstat-card.solution {
-    background: rgba(0,169,157,0.12);
-    border: 1.5px solid rgba(0,169,157,0.35);
-  }
   .cstat-amount {
     font-family: 'Syne', sans-serif;
     font-size: 32px;
@@ -1164,7 +1173,7 @@
     color: var(--white);
     line-height: 1;
   }
-  .cstat-card.solution .cstat-amount { color: var(--teal-light); }
+  .cstat-card.solution .cstat-amount { color: var(--teal-light); font-size: 42px; }
   .cstat-label {
     font-size: 14px;
     font-weight: 600;
@@ -1181,6 +1190,7 @@
   /* ─── RESPONSIVE for new sections ─── */
   @media (max-width: 1024px) {
     .cstats-grid { grid-template-columns: repeat(2, 1fr); }
+    .cstat-card.solution { grid-template-columns: 1fr; text-align: left; }
     .regtech-grid { grid-template-columns: 1fr; gap: 48px; }
   }
   @media (max-width: 640px) {
