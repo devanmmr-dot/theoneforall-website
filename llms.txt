@@ -1,0 +1,28 @@
+# The One For All (TOFA)
+
+> TOFA is a South African RegTech platform for transport, logistics and industrial businesses. It combines fleet management (TMS), HR and HSEQ compliance in one system, built around South African law: RTMS (SANS 1395), dangerous goods transport, OHSA, BCEA leave, COIDA and POPIA.
+
+Built by Madz Ventures (Pty) Ltd, Johannesburg, South Africa. Founded by Devan Govender, a former operations manager in bulk dangerous goods transport.
+
+## Who it is for
+- South African transport operators, including dangerous goods (LPG, fuel, chemicals) and tanker fleets
+- SMEs with 20 to 300 employees that need HR, leave and compliance records in one place
+- Fitment centres and parts businesses (brakes, parts counter, workshop job cards)
+
+## Modules
+- Fleet & TMS: trips, dispatch, routes, fuel, vehicle and driver compliance with expiry alerts, axle load, OBC/telematics events, invoicing per contract
+- Daily vehicle checks: drivers complete company checklists on their phone (e.g. dangerous goods inspection); a failed critical item marks the vehicle not fit for use and alerts the fleet manager
+- HR: employee files, POPIA-separated sensitive data, BCEA leave balances, line-manager leave approval, staff self-service, disciplinary, grievances, IR cases, HR audit trail and reports
+- HSEQ: incidents, CAPA, risk register, PPE matrix and issue register, supplier and contractor compliance (OHSA s37(2), COID letters of good standing, tiered document checklists, audits, site access status)
+- Procurement: purchase orders, suppliers, supplier invoices
+- Parts & workshop: point of sale, quotes with follow-ups, job cards, multi-depot stock, trade customer ordering portal
+
+## Key facts
+- Hosted cloud software, accessed via web browser and mobile phone
+- Role-based access: staff see only their own records; managers see their teams; HR sees everyone
+- Every change to employee records is logged
+
+## Contact
+- Website: https://www.theoneforall.co.za
+- Email: devan@theoneforall.co.za
+- Phone/WhatsApp: +27 60 573 3680
